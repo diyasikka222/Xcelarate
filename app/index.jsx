@@ -1,144 +1,98 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ImageBackground,
-  ScrollView,
-  Platform,
-} from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import tw from 'twrnc';
 
-const SignUpScreen = () => {
-  const [selectedLocation, setSelectedLocation] = useState('');
-  const locations = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Kolkata'];
 
-  return (
-    <ImageBackground
-      source={require('../assets/images/0001.jpg')}
-      style={tw`flex-1`}
-      resizeMode="cover"
-    >
-      <ScrollView
-        contentContainerStyle={tw`p-8 items-center justify-center`}
-        keyboardShouldPersistTaps="handled"
-      >
-        <Text style={tw`text-2xl font-bold text-white mb-5`}>SIGN UP</Text>
+// import React, { useState } from 'react';
+// import {
+//   View,
+//   Text,
+//   TouchableOpacity,
+//   Image,
+//   ScrollView,
+// } from 'react-native';
+// import { CheckSquare, Square } from 'lucide-react-native';
 
-        {/* Username Field */}
-        <View style={tw`flex-row bg-white rounded-full px-4 items-center my-2 h-11 w-full`}>
-          <Icon name="user" size={18} color="#999" style={tw`mr-2`} />
-          <TextInput
-            placeholder="Username"
-            placeholderTextColor="#999"
-            style={tw`flex-1 text-black text-base`}
-          />
-        </View>
+// export default function DisclaimerScreen() {
+//   const [agreed, setAgreed] = useState(false);
 
-        {/* Email Field */}
-        <View style={tw`flex-row bg-white rounded-full px-4 items-center my-2 h-11 w-full`}>
-          <Icon name="envelope" size={18} color="#999" style={tw`mr-2`} />
-          <TextInput
-            placeholder="Email ID"
-            placeholderTextColor="#999"
-            style={tw`flex-1 text-black text-base`}
-            keyboardType="email-address"
-          />
-        </View>
+//   return (
+//     <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: '#000' }}>
+//       {/* Top Image */}
+//       <Image
+//         source={require('../assets/images/Github-1920x1080-cat-only.png')}
+//         style={{ width: '100%', height: 200, resizeMode: 'cover' }}
+//       />
 
-        {/* Contact Field */}
-        <View style={tw`flex-row bg-white rounded-full px-4 items-center my-2 h-11 w-full`}>
-          <Icon name="phone" size={18} color="#999" style={tw`mr-2`} />
-          <TextInput
-            placeholder="Contact Details"
-            placeholderTextColor="#999"
-            style={tw`flex-1 text-black text-base`}
-            keyboardType="phone-pad"
-          />
-        </View>
+//       {/* White Card */}
+//       <View
+//         style={{
+//           backgroundColor: 'white',
+//           borderTopLeftRadius: 32,
+//           borderTopRightRadius: 32,
+//           padding: 20,
+//           marginTop: -30,
+//           minHeight: 500,
+//           shadowColor: '#000',
+//           shadowOffset: { width: 0, height: -2 },
+//           shadowOpacity: 0.2,
+//           shadowRadius: 6,
+//           elevation: 10,
+//         }}
+//       >
+//         <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#800080', marginBottom: 10 }}>
+//           Disclaimer
+//         </Text>
 
-        {/* Organisation Field */}
-        <View style={tw`flex-row bg-white rounded-full px-4 items-center my-2 h-11 w-full`}>
-          <Icon name="building" size={18} color="#999" style={tw`mr-2`} />
-          <TextInput
-            placeholder="Organisation"
-            placeholderTextColor="#999"
-            style={tw`flex-1 text-black text-base`}
-          />
-        </View>
+//         <Text style={{ fontSize: 16, marginBottom: 12 }}>
+//           Before proceeding, confirm that you understand and accept the following rules:
+//         </Text>
 
-        {/* Designation Field */}
-        <View style={tw`flex-row bg-white rounded-full px-4 items-center my-2 h-11 w-full`}>
-          <Icon name="briefcase" size={18} color="#999" style={tw`mr-2`} />
-          <TextInput
-            placeholder="Designation"
-            placeholderTextColor="#999"
-            style={tw`flex-1 text-black text-base`}
-          />
-        </View>
+//         {[
+//           'This survey is for feedback purpose and responses will only be used for that purpose.',
+//           'Responses are confidential and will only be used in aggregate. No personal data will be shared.',
+//           'By completing this survey, you consent to the use of your data for research purposes only.',
+//           'By participating, you agree to the terms outlined here. For questions, contact us at [contact information].',
+//           'No financial compensation is offered for completing this survey.',
+//           'Participants must be [insert minimum age].',
+//           'We are not responsible for any technical issues encountered. Contact [contact information] for help.',
+//         ].map((item, index) => (
+//           <Text key={index} style={{ fontSize: 14, color: '#333', marginBottom: 8 }}>• {item}</Text>
+//         ))}
 
-        {/* Location Dropdown */}
-        <View style={tw`w-full mt-2 mb-2`}>
-          <Text style={tw`text-white mb-1 ml-1 font-semibold`}>Location</Text>
-          <View style={tw`bg-white rounded-full h-11 justify-center px-3`}>
-            <Picker
-              selectedValue={selectedLocation}
-              onValueChange={(itemValue) => setSelectedLocation(itemValue)}
-              style={tw`text-black w-full`}
-              dropdownIconColor="#800080"
-              mode={Platform.OS === 'ios' ? 'dialog' : 'dropdown'}
-            >
-              <Picker.Item label="Select a location" value="" />
-              {locations.map((loc) => (
-                <Picker.Item key={loc} label={loc} value={loc} />
-              ))}
-            </Picker>
-          </View>
-        </View>
+//         {/* Checkbox */}
+//         <TouchableOpacity
+//           onPress={() => setAgreed(!agreed)}
+//           style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}
+//         >
+//           {agreed ? (
+//             <CheckSquare size={24} color="#800080" />
+//           ) : (
+//             <Square size={24} color="#800080" />
+//           )}
+//           <Text style={{ marginLeft: 10, fontSize: 15 }}>
+//             I have read and agree to the assessment terms.
+//           </Text>
+//         </TouchableOpacity>
 
-        {/* Create Password Field */}
-        <View style={tw`flex-row bg-white rounded-full px-4 items-center my-2 h-11 w-full`}>
-          <Icon name="lock" size={18} color="#999" style={tw`mr-2`} />
-          <TextInput
-            placeholder="Create Password"
-            placeholderTextColor="#999"
-            style={tw`flex-1 text-black text-base`}
-            secureTextEntry
-          />
-        </View>
-
-        {/* Confirm Password Field */}
-        <View style={tw`flex-row bg-white rounded-full px-4 items-center my-2 h-11 w-full`}>
-          <Icon name="lock" size={18} color="#999" style={tw`mr-2`} />
-          <TextInput
-            placeholder="Confirm Password"
-            placeholderTextColor="#999"
-            style={tw`flex-1 text-black text-base`}
-            secureTextEntry
-          />
-        </View>
-
-        {/* Create Account Button */}
-        <TouchableOpacity
-          style={tw`bg-[#800080] rounded-full py-3 px-10 mt-5 w-full items-center`}
-        >
-          <Text style={tw`text-white font-semibold text-base`}>
-            Create Account
-          </Text>
-        </TouchableOpacity>
-
-        {/* Login Button */}
-        <TouchableOpacity
-          style={tw`bg-[#800080] rounded-full py-3 px-10 mt-4 w-full items-center`}
-        >
-          <Text style={tw`text-white font-semibold text-base`}>Login</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </ImageBackground>
-  );
-};
-
-export default SignUpScreen;
+//         {/* Button */}
+//         <TouchableOpacity
+//           disabled={!agreed}
+//           style={{
+//             backgroundColor: agreed ? '#800080' : '#ccc',
+//             paddingVertical: 14,
+//             borderRadius: 16,
+//             marginTop: 30,
+//             alignItems: 'center',
+//             shadowColor: '#800080',
+//             shadowOffset: { width: 0, height: 3 },
+//             shadowOpacity: 0.4,
+//             shadowRadius: 6,
+//             elevation: 6,
+//           }}
+//         >
+//           <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>
+//             Start Assessment
+//           </Text>
+//         </TouchableOpacity>
+//       </View>
+//     </ScrollView>
+//   );
+// }
